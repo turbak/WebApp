@@ -1,8 +1,7 @@
 package ru.test.webapp.db;
 
-
-import ru.test.webapp.entity.Person;
 import java.sql.*;
+import ru.test.webapp.entity.Person;
 
 public class Login {
 	static final String DB_URL = "jdbc:postgresql://localhost:5432/webapp";
@@ -31,7 +30,6 @@ public class Login {
 
 			passchk.setString(1, login);
 			passchk.setString(2, password);
-			connection.close();
 			return passchk.executeQuery().next();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -52,7 +50,6 @@ public class Login {
 				set.next();
 				person.setName(set.getString("name"));
 				person.setSurname(set.getString("surname"));
-				connection.close();
 				return person;
 			} catch (SQLException e) {
 				return null;
