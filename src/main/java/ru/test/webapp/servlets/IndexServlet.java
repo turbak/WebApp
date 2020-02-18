@@ -34,7 +34,7 @@ public class IndexServlet extends HttpServlet {
 			if (person == null)
 				resp.sendRedirect("exit");
 			PrintWriter writer = resp.getWriter();
-			writer.println("Welcome, " + person.getSurname() + ". [" + person.getName().substring(0, 1) + "].!");
+			writer.println("Добро пожаловать, " + person.getSurname() + ". [" + person.getName().substring(0, 1) + "].!");
 			writer.println("<a href=\"exit\">Exit");
 		}
 	}
