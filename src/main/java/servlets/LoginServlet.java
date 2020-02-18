@@ -1,3 +1,7 @@
+package servlets;
+
+import Entity.Person;
+import db.Login;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.include(req, resp);
 		}
 		PrintWriter writer = resp.getWriter();
-		if (login.equals("user") && password.equals("qwerty")) {
+		if (Login.login(login, password)) {
 			writer.println("login successful");
 			session.setAttribute("user", login);
 			resp.addCookie(new Cookie("user", (String) session.getAttribute("user")));

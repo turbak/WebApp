@@ -11,5 +11,6 @@
     <title>Temp</title>
 </head>
 <body>
+    <h1>I don't know how to map Index servlet to "/" so there is a link to <a href="index">Index</a> </h1>
 </body>
 </html>

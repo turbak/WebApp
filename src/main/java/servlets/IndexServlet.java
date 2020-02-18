@@ -1,4 +1,7 @@
+package servlets;
+
 import Entity.Person;
+import db.Login;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -29,8 +32,9 @@ public class IndexServlet extends HttpServlet {
 		}
 		else {
 			String username = (String) session.getAttribute("user");
+			Person person = Login.getPerson(username);
 			PrintWriter writer = resp.getWriter();
-			writer.println("Welcome, " + map.get(username).getSurname() + ". [" + map.get(username).getName().substring(0, 1) + "].!");
+			writer.println("Welcome, " + person.getSurname() + ". [" + person.getName().substring(0, 1) + "].!");
 			writer.println("<a href=\"exit\">Exit");
 		}
 		resp.setCharacterEncoding("UTF-8");
