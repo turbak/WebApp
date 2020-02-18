@@ -25,7 +25,7 @@ public class IndexServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		resp.setContentType("text/html");
 		Cookie[] cookies = req.getCookies();
-		if (session.getAttribute("user") == null && cookies != null && cookies.length == 3)
+		if (session.getAttribute("user") == null && cookies != null && cookies.length == 2)
 			session.setAttribute("user", cookies[0].getValue());
 		if (session.getAttribute("user") == null) {
 			resp.sendRedirect("login.html");

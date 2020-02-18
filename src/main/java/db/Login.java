@@ -71,4 +71,34 @@ public class Login {
 		}
 		return null;
 	}
+
+	public static boolean register(String login, String password, String name, String surname) {
+		Connection connection = null;
+
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return false;
+		}
+		try {
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (connection != null) {
+			String str = "INSERT INTO users (login, password, name, surname) VALUES (?, ?, ?, ?)";
+			try {
+				PreparedStatement statement = connection.prepareStatement(str);
+				statement.setString(1, login);
+				statement.setString(2, password);
+				statement.setString(3, name);
+				statement.setString(4, surname);
+				return statement.executeUpdate() > 0;
+			} catch (SQLException e) {
+				return false;
+			}
+		}
+		return false;
+	}
 }

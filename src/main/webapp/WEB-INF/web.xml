@@ -12,11 +12,20 @@
 	<servlet>
 		<servlet-name>Index</servlet-name>
 		<servlet-class>servlets.IndexServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>Exit</servlet-name>
 		<servlet-class>servlets.ExitServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>servlets.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Index</servlet-name>
 		<url-pattern>/index</url-pattern>

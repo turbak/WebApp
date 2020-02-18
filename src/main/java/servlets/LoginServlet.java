@@ -27,7 +27,9 @@ public class LoginServlet extends HttpServlet {
 		if (Login.login(login, password)) {
 			writer.println("login successful");
 			session.setAttribute("user", login);
-			resp.addCookie(new Cookie("user", (String) session.getAttribute("user")));
+			Cookie cookie = new Cookie("user", login);
+			cookie.setMaxAge(700);
+			resp.addCookie(cookie);
 			resp.sendRedirect("index");
 		}
 		else {
