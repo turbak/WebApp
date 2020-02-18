@@ -9,6 +9,7 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		String login = req.getParameter("login");
 		String passwd = req.getParameter("password");
 		String name = req.getParameter("name");
