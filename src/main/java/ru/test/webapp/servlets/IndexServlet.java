@@ -1,7 +1,7 @@
-package servlets;
+package ru.test.webapp.servlets;
 
-import Entity.Person;
-import db.Login;
+import ru.test.webapp.entity.Person;
+import ru.test.webapp.db.Login;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;

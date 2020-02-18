@@ -1,6 +1,5 @@
-package servlets;
+package ru.test.webapp.servlets;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;

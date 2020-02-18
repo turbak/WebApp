@@ -1,4 +1,4 @@
-package Entity;
+package ru.test.webapp.entity;
 
 public class Person {
 	String name;

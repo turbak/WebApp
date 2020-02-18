@@ -1,7 +1,7 @@
-package db;
+package ru.test.webapp.db;
 
-import Entity.Person;
 
+import ru.test.webapp.entity.Person;
 import java.sql.*;
 
 public class Login {
@@ -9,20 +9,19 @@ public class Login {
 	static final String USER = "turbak";
 	static final String PASS = "3361406";
 
-	public static boolean login(String login, String password) {
+	private static Connection connect() {
 		Connection connection = null;
-
 		try {
 			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		}
-		try {
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return connection;
+	}
+
+	public static boolean login(String login, String password) {
+		Connection connection = connect();
 		if (connection != null) {
 			System.out.println("Connection successul");
 			String sel = "SELECT * FROM users WHERE login = ? AND password = ?";
@@ -32,6 +31,7 @@ public class Login {
 
 			passchk.setString(1, login);
 			passchk.setString(2, password);
+			connection.close();
 			return passchk.executeQuery().next();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -41,19 +41,7 @@ public class Login {
 	}
 
 	public static Person getPerson(String login) {
-		Connection connection = null;
-
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
-		try {
-			connection = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Connection connection = connect();
 		if (connection != null) {
 			String str = "SELECT name, surname FROM users WHERE login = ?";
 			try {
@@ -64,6 +52,7 @@ public class Login {
 				set.next();
 				person.setName(set.getString("name"));
 				person.setSurname(set.getString("surname"));
+				connection.close();
 				return person;
 			} catch (SQLException e) {
 				return null;
@@ -73,19 +62,7 @@ public class Login {
 	}
 
 	public static boolean register(String login, String password, String name, String surname) {
-		Connection connection = null;
-
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return false;
-		}
-		try {
-			connection = DriverManager.getConnection(DB_URL, USER, PASS);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		Connection connection = connect();
 		if (connection != null) {
 			String str = "INSERT INTO users (login, password, name, surname) VALUES (?, ?, ?, ?)";
 			try {
@@ -94,6 +71,7 @@ public class Login {
 				statement.setString(2, password);
 				statement.setString(3, name);
 				statement.setString(4, surname);
+				connection.close();
 				return statement.executeUpdate() > 0;
 			} catch (SQLException e) {
 				return false;

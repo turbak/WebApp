@@ -7,20 +7,20 @@
 			 version="4.0">
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>servlets.LoginServlet</servlet-class>
+		<servlet-class>ru.test.webapp.servlets.LoginServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Index</servlet-name>
-		<servlet-class>servlets.IndexServlet</servlet-class>
+		<servlet-class>ru.test.webapp.servlets.IndexServlet</servlet-class>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet>
 		<servlet-name>Exit</servlet-name>
-		<servlet-class>servlets.ExitServlet</servlet-class>
+		<servlet-class>ru.test.webapp.servlets.ExitServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Register</servlet-name>
-		<servlet-class>servlets.RegisterServlet</servlet-class>
+		<servlet-class>ru.test.webapp.servlets.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Register</servlet-name>
