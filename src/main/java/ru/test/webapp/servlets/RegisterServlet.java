@@ -10,7 +10,7 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		String login = req.getParameter("login");
+		String login = req.getParameter("login").toLowerCase();
 		String passwd = req.getParameter("password");
 		String name = req.getParameter("name");
 		String surname = req.getParameter("surname");
@@ -18,9 +18,9 @@ public class RegisterServlet extends HttpServlet {
 		if (Login.register(login, passwd, name, surname)) {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", login);
-			Cookie cookie = new Cookie("user", login);
+			/*Cookie cookie = new Cookie("user", login);
 			cookie.setMaxAge(700);
-			resp.addCookie(cookie);
+			resp.addCookie(cookie);*/
 			resp.sendRedirect("index");
 		}
 		else

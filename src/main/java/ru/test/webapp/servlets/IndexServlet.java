@@ -15,15 +15,15 @@ public class IndexServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
 		resp.setContentType("text/html");
-		Cookie[] cookies = req.getCookies();
-		if (session.getAttribute("user") == null && cookies != null && cookies.length == 2) {
+		/*Cookie[] cookies = req.getCookies();
+		if (session.getAttribute("user") == null && cookies != null && cookies.length != 0) {
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("user")) {
 					session.setAttribute("user", cookie.getValue());
 					break;
 				}
 			}
-		}
+		}*/
 		if (session.getAttribute("user") == null) {
 			resp.sendRedirect("login.html");
 		}
