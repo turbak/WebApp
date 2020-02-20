@@ -10,6 +10,6 @@
 </head>
 <body>
     <div style="text-align: center;">Привет, ${user}</div>
-    <a href="/exit">Exit</a>
+    <a href="exit">Exit</a>
 </body>
 </html>
