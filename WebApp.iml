@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4" />
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="initializer ru.test.webapp.config.AppInitializer servlet context" name="MVC dispatcher initializer servlet context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/java/ru/test/webapp/config/WebConfig.java</file>
+        </fileset>
+        <fileset id="initializer ru.test.webapp.config.AppInitializer root context" name="MVC dispatcher initializer root context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/java/ru/test/webapp/config/RootConfig.java</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/ru/test/webapp/config/RootConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/ru/test/webapp/config/WebConfig.java</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+</module>
