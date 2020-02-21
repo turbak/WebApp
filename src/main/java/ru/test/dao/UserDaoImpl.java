@@ -1,11 +1,11 @@
 package ru.test.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ru.test.models.Login;
 import ru.test.models.User;
 
@@ -23,6 +23,7 @@ public class UserDaoImpl implements UserDao {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
+	@Transactional
 	public User register(User user) {
 		try {
 			int update = jdbcTemplate.update("INSERT INTO profiles(name, password, first_name, last_name) VALUES (?, ?, ?, ?)",
@@ -34,12 +35,14 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
+	@Transactional(readOnly = true)
 	public User getUser(String name) {
 		List<User> query = jdbcTemplate.query("SELECT * FROM profiles WHERE name = ? LIMIT 1", new Object[]{
 				name}, new UserMapper());
 		return query.size() == 0 ? null : query.get(0);
 	}
 
+	@Transactional(readOnly = true)
 	public User validateUser(Login login) {
 		List<User> query = jdbcTemplate.query("SELECT * FROM profiles WHERE name = ? AND password = ? LIMIT 1", new Object[]{
 				login.getName(), login.getPassword()}, new UserMapper());
