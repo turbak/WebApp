@@ -1,9 +1,17 @@
 package ru.test.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class User {
+	@NotNull
+	@Size(min = 3, max = 12)
 	private String name;
+	@NotNull
 	private String password;
+	@NotNull
 	private String firstName;
+	@NotNull
 	private String lastName;
 
 	@Override
@@ -16,7 +24,7 @@ public class User {
 	}
 
 	public User(String name, String password, String firstName, String lastName) {
-		this.name = name;
+		this.name = name.trim().toLowerCase();
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,7 +54,7 @@ public class User {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim().toLowerCase();
 	}
 
 	public String getPassword() {

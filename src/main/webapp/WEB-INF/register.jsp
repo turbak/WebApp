@@ -11,6 +11,8 @@
 </head>
 <body>
 ${message}
+<div style="text-align: center;">
+    <h1>Registration</h1>
 <spring:form method="post" action="register" modelAttribute="user">
     <spring:input path="name" placeholder="Login"/><br>
     <spring:password path="password" placeholder="Password"/><br>
@@ -18,5 +20,6 @@ ${message}
     <spring:input path="lastName" placeholder="Фамилия"/><br>
     <input type="submit" value="OK">
 </spring:form>
+</div>
 </body>
 </html>

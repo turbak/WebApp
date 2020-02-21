@@ -11,14 +11,16 @@
     <title>Login</title>
 </head>
 <body>
+<div style="text-align: center;">
 ${message}
 <h1>Login</h1>
     <spring:form method="post" action="login" modelAttribute="userForm">
-        <spring:input path="name" placeholder="Login"/>
-        <spring:password path="password" placeholder="Password"/>
+        <spring:input path="name" placeholder="Login"/><br>
+        <spring:password path="password" placeholder="Password"/><br>
         <input type="submit" value="OK">
     </spring:form>
     <br>
     <a href="register">Register</a>
+</div>
 </body>
 </html>

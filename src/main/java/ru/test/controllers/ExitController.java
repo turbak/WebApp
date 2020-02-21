@@ -18,6 +18,6 @@ public class ExitController {
 		session.removeAttribute("user");
 		session.invalidate();
 		model.addAttribute("userForm", new Login());
-		return "login";
+		return "redirect:login";
 	}
 }
