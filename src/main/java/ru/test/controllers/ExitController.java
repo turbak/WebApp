@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import ru.test.models.User;
+import ru.test.models.Login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,7 +17,7 @@ public class ExitController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
 		session.invalidate();
-		model.addAttribute("userForm", new User());
+		model.addAttribute("userForm", new Login());
 		return "login";
 	}
 }

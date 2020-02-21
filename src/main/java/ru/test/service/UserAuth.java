@@ -1,10 +1,13 @@
 package ru.test.service;
 
-import org.springframework.context.annotation.Bean;
+import ru.test.models.Login;
+import ru.test.models.User;
 
-public class UserAuth {
+public interface UserAuth {
 
-	public boolean isValid(String login, String password) {
-		return (login.equals("user") && password.equals("qwerty"));
-	}
+	boolean isValid(Login login);
+
+	User getUser(String name);
+
+	User registerUser(User user);
 }

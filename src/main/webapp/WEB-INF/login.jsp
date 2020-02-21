@@ -18,5 +18,7 @@ ${message}
         <spring:password path="password" placeholder="Password"/>
         <input type="submit" value="OK">
     </spring:form>
+    <br>
+    <a href="register">Register</a>
 </body>
 </html>

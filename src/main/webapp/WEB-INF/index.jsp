@@ -9,7 +9,10 @@
     <title>Title</title>
 </head>
 <body>
-    <div style="text-align: center;">Привет, ${user}</div>
-    <a href="/exit">Exit</a>
+    <div style="text-align: center;">
+            Привет, ${user}<br>
+            <a href="exit">Exit</a>
+
+    </div>
 </body>
 </html>
