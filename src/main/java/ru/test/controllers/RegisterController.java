@@ -16,7 +16,6 @@ import ru.test.service.UserAuth;
 import ru.test.service.UserValidator;
 
 import javax.validation.Valid;
-import javax.xml.validation.Validator;
 
 @Controller
 @RequestMapping("/register")
@@ -33,13 +32,8 @@ public class RegisterController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String processRegister(@Valid @ModelAttribute("userForm") User user, ModelMap modelMap, BindingResult bindingResult) {
-		if (!bindingResult.hasErrors()) {
-			modelMap.addAttribute("message", "Some fields are empty or username is longer than 12 characters");
-			modelMap.addAttribute("user", new User());
-			return "register";
-		}
 		if (userAuthImpl.registerUser(user) == null) {
-			modelMap.addAttribute("message", "Username is taken");
+			modelMap.addAttribute("message", "Username is taken or some fields are empty or username is longer than 12 characters");
 			modelMap.addAttribute("user", new User());
 			return "register";
 		}

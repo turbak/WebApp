@@ -1,5 +1,8 @@
 package ru.test.models;
 
+import ru.test.service.UserValidator;
+
+import javax.validation.Constraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

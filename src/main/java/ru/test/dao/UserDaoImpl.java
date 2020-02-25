@@ -29,7 +29,8 @@ public class UserDaoImpl implements UserDao {
 			int update = jdbcTemplate.update("INSERT INTO profiles(name, password, first_name, last_name) VALUES (?, ?, ?, ?)",
 					user.getName(), user.getPassword(), user.getFirstName(), user.getLastName());
 		}
-		catch (DuplicateKeyException e) {
+		catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 		return user;
