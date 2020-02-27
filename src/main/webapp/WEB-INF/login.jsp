@@ -14,8 +14,8 @@
 <div style="text-align: center;">
 ${message}
 <h1>Login</h1>
-    <spring:form method="post" action="login" modelAttribute="userForm">
-        <spring:input path="name" placeholder="Login"/><br>
+    <spring:form method="post" action="login" modelAttribute="profile">
+        <spring:input path="login" placeholder="Login"/><br>
         <spring:password path="password" placeholder="Password"/><br>
         <input type="submit" value="OK">
     </spring:form>

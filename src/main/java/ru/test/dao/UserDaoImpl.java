@@ -1,4 +1,5 @@
 package ru.test.dao;
+/*
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -61,3 +62,4 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 }
+*/

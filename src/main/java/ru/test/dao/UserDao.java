@@ -1,4 +1,5 @@
 package ru.test.dao;
+/*
 
 import ru.test.models.Login;
 import ru.test.models.User;
@@ -10,3 +11,4 @@ public interface UserDao {
 
 	User validateUser(Login login);
 }
+*/

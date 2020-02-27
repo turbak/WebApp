@@ -4,3 +4,7 @@ CREATE TABLE profiles (
       first_name text not null ,
       last_name text not null
 );
+
+CREATE SEQUENCE referrer_seq
+    START WITH 1
+    INCREMENT BY 1;

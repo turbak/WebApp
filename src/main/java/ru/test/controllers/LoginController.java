@@ -3,44 +3,44 @@ package ru.test.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import ru.test.models.Login;
-import ru.test.models.User;
-import ru.test.service.UserAuth;
+import ru.test.entity.Profile;
+import ru.test.service.ProfileService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(value = "/login")
+@RequestMapping("/login")
 public class LoginController {
 	@Autowired
-	UserAuth userAuthImpl;
+	private ProfileService profileService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getLogin(HttpServletRequest request) {
-	/*	HttpSession session = request.getSession(false);
-		if (session == null)
-			return "index";*/
-		ModelAndView model = new ModelAndView("login");
-		Login login = new Login();
-		model.addObject("userForm", login);
-		return model;
+	public ModelAndView getLogin() {
+		ModelAndView modelAndView = new ModelAndView("login");
+		modelAndView.addObject("profile", new Profile());
+		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String processLogin(@ModelAttribute("userForm") Login login, HttpServletRequest request, ModelMap modelMap) {
-		if (userAuthImpl.isValid(login)) {
-			System.out.println("Hello " + login.getName());
-			request.getSession().setAttribute("user", login.getName());
-			User user = userAuthImpl.getUser(login.getName());
-			modelMap.addAttribute("user", user.getFirstName() + " " + user.getLastName());
-			return "index";
+	public ModelAndView postLogin(@ModelAttribute("profile") Profile profile, HttpServletRequest request) {
+		Profile login = profileService.getProfileByLoginAndPassword(profile.getLogin(), profile.getPassword());
+		ModelAndView modelAndView = new ModelAndView();
+		if (login == null) {
+			modelAndView.addObject("message", "wrong username or password");
+			modelAndView.addObject("profile", new Profile());
+			modelAndView.setViewName("login");
 		}
 		else {
-			System.out.println("Wrong username or password");
-			request.setAttribute("message", "Wrong username or password");
-			return "login";
+			HttpSession session = request.getSession();
+			session.setAttribute("user", login.getLogin());
+			modelAndView.addObject("profile", login);
+			modelAndView.setViewName("index");
 		}
+		return modelAndView;
 	}
 }
