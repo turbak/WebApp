@@ -12,7 +12,7 @@
     <div style="text-align: center;">
         <h1>Main page</h1>
             Привет, ${profile.name} ${profile.surname}<br>
-            <a href="exit">Exit</a>
+            <a href="exit">Exit</a>          <a href="profiles">View profiles</a>
     </div>
 </body>
 </html>

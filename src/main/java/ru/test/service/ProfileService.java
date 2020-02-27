@@ -8,4 +8,5 @@ public interface ProfileService {
 	Profile addProfile(Profile profile);
 	Profile getProfileByLogin(String login);
 	Profile getProfileByLoginAndPassword(String login, String password);
+	List<Profile> getAll();
 }
