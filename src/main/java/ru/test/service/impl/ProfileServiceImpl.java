@@ -1,5 +1,7 @@
 package ru.test.service.impl;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +25,9 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	@Transactional(readOnly = true)
 	public Profile getProfileByLogin(String login) {
-		return profileRepository.getProfileByLogin(login);
+		Profile profile = profileRepository.getProfileByLogin(login);
+		Hibernate.initialize(profile.getReferrer());
+		return profile;
 	}
 
 	@Override
@@ -42,12 +46,5 @@ public class ProfileServiceImpl implements ProfileService {
 	@Transactional
 	public void deleteProfile(String login) {
 		profileRepository.deleteByLogin(login);
-	}
-
-	@Override
-	@Transactional
-	public Profile updateProfile(String name, String surname, String login) {
-		profileRepository.updateProfileByLogin(name, surname, login);
-		return profileRepository.getProfileByLogin(login);
 	}
 }

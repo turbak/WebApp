@@ -23,7 +23,7 @@ public class Profile {
 	private String surname;
 	@ColumnDefault(value = "false")
 	private boolean admin;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "referrer_id")
 	private Referrer referrer;
 

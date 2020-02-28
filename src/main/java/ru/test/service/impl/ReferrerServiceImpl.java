@@ -15,9 +15,9 @@ public class ReferrerServiceImpl implements ReferrerService {
 	private ReferrerRepository referrerRepository;
 
 	@Override
-	@Transactional
+	@Transactional()
 	public Referrer addReferrer(Referrer referrer) {
-		Referrer save = referrerRepository.saveAndFlush(referrer);
+		Referrer save = referrerRepository.save(referrer);
 		return save;
 	}
 

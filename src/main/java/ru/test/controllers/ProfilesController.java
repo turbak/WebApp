@@ -58,7 +58,10 @@ public class ProfilesController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		HttpSession session = request.getSession();
 		String login = (String) session.getAttribute("user");
-		profile = profileService.updateProfile(profile.getName(), profile.getSurname(), login);
+		Profile update = profileService.getProfileByLogin(login);
+		update.setName(profile.getName());
+		update.setSurname(profile.getSurname());
+		profile = profileService.addProfile(update);
 		modelAndView.addObject("profile", profile);
 
 		return modelAndView;
