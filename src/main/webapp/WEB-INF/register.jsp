@@ -19,11 +19,13 @@ ${message}
     <spring:input path="name" placeholder="Имя"/><br>
     <spring:input path="surname" placeholder="Фамилия"/><br>
     <spring:select path="referrer.id">
-        <spring:option value = "" label = "Select your referrer"/>
+        <spring:option value = "0" label = "Select your referrer"/>
         <spring:options items = "${referrers}" itemValue="Id" itemLabel="Ref_name"/>
     </spring:select>
     <input type="submit" value="OK">
 </spring:form>
+    <br>
+    <a href="/register/referrer">Register referrer</a>
 </div>
 </body>
 </html>

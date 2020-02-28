@@ -14,8 +14,8 @@ import javax.persistence.*;
 public class Profile {
 	@Id
 	@Column(name = "profile_id", nullable = false, updatable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name="profile_generator", sequenceName = "profile_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_gen")
+	@SequenceGenerator(sequenceName = "profile_seq", name = "profile_gen")
 	private Integer id;
 	private String login;
 	private String password;
@@ -23,7 +23,12 @@ public class Profile {
 	private String surname;
 	@ColumnDefault(value = "false")
 	private boolean admin;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
 	@JoinColumn(name = "referrer_id")
 	private Referrer referrer;
+
+	@Override
+	public String toString() {
+		return String.format("%s %s\n", name, surname);
+	}
 }

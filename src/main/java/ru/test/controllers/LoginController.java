@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 import ru.test.entity.Profile;
 import ru.test.service.ProfileService;
 
@@ -31,9 +33,9 @@ public class LoginController {
 		Profile login = profileService.getProfileByLoginAndPassword(profile.getLogin(), profile.getPassword());
 		ModelAndView modelAndView = new ModelAndView();
 		if (login == null) {
-			modelAndView.addObject("message", "wrong username or password");
+			RedirectView redirect = new RedirectView("login");
 			modelAndView.addObject("profile", new Profile());
-			modelAndView.setViewName("login");
+			modelAndView.setView(redirect);
 		}
 		else {
 			HttpSession session = request.getSession();
