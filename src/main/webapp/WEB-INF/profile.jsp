@@ -9,7 +9,11 @@
     <title>${profileName}</title>
 </head>
 <body>
-    ${profile.name} ${profile.surname}
-    Referrer: ${referrer.ref_name} Num of followers: ${referrer.num_of_followers}
+<div style="text-align: center;">
+    <h1>Profile of user ${profileName}</h1>
+    ${profile.name} ${profile.surname}<br>
+    Referrer: ${referrer.ref_name}<br>
+    Num of followers: ${referrer.num_of_followers}
+</div>
 </body>
 </html>

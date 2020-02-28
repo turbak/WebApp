@@ -34,6 +34,7 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Profile> getAll() {
 		return profileRepository.findAll();
 	}

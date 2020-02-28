@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 public abstract class AbstractIdentifiableObject<Id extends Serializable> implements Identifiable<Id> {
 	protected Id id;
-	@Transient
 	private Integer hashcode;
 
 	@Override

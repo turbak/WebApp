@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import ru.test.entity.Profile;
+import ru.test.entity.Referrer;
 import ru.test.service.ProfileService;
 import ru.test.service.ReferrerService;
 
@@ -39,7 +40,10 @@ public class ProfilesController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("profileName", profileName);
 		Profile profile = profileService.getProfileByLogin(profileName);
-		modelAndView.addObject("referrer", profile.getReferrer().equals("") ? "None" : profile.getReferrer());
+		Referrer referrer = profile.getReferrer();
+		if (referrer.getRef_name() == null)
+			referrer.setRef_name("None");
+		modelAndView.addObject("referrer", referrer);
 		modelAndView.addObject("profile", profile);
 		modelAndView.setViewName("profile");
 		return modelAndView;

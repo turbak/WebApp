@@ -22,10 +22,13 @@ import java.util.Map;
 
 @Controller
 public class RegisterController {
-	@Autowired
-	private ProfileService profileService;
-	@Autowired
-	private ReferrerService referrerService;
+	private final ProfileService profileService;
+	private final ReferrerService referrerService;
+
+	public RegisterController(ProfileService profileService, ReferrerService referrerService) {
+		this.profileService = profileService;
+		this.referrerService = referrerService;
+	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView getRegister() {

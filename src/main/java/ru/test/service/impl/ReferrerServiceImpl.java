@@ -28,6 +28,7 @@ public class ReferrerServiceImpl implements ReferrerService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Referrer getReferrer(Integer id) {
 		return referrerRepository.getOne(id);
 	}

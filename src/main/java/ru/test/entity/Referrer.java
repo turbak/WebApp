@@ -18,6 +18,6 @@ public class Referrer {
 	private Integer id;
 	private Integer num_of_followers;
 	private String ref_name;
-	@OneToMany(mappedBy = "referrer", fetch = FetchType.EAGER, orphanRemoval = true, cascade = {CascadeType.MERGE})
+	@OneToMany(mappedBy = "referrer", fetch = FetchType.LAZY, orphanRemoval = true, cascade = {CascadeType.MERGE})
 	private List<Profile> profiles;
 }
