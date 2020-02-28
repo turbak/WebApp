@@ -4,7 +4,7 @@
   Date: 25.02.2020
   Time: 15:55
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <title>Title</title>
@@ -12,10 +12,13 @@
 <body>
 
 <div style="text-align: center;">
+    <h1>View Profiles</h1>
     <% List<Profile> list = (List<Profile>) request.getAttribute("profiles");
         for (Profile profile : list) {
-        	out.println(profile);
-        	out.println("<a href=\"/profiles/" + profile.getLogin() + "\">View</a><br>");
+        	if (profile != null) {
+                out.println(profile);
+                out.println("<a href=\"/profiles/" + profile.getLogin() + "\">View</a><br>");
+            }
         }
     %>
 </div>

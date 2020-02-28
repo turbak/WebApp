@@ -17,8 +17,7 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	@Transactional
 	public Profile addProfile(Profile profile) {
-		Profile saved = profileRepository.saveAndFlush(profile);
-		return saved;
+		return profileRepository.saveAndFlush(profile);
 	}
 
 	@Override
@@ -39,4 +38,16 @@ public class ProfileServiceImpl implements ProfileService {
 		return profileRepository.findAll();
 	}
 
+	@Override
+	@Transactional
+	public void deleteProfile(String login) {
+		profileRepository.deleteByLogin(login);
+	}
+
+	@Override
+	@Transactional
+	public Profile updateProfile(String name, String surname, String login) {
+		profileRepository.updateProfileByLogin(name, surname, login);
+		return profileRepository.getProfileByLogin(login);
+	}
 }

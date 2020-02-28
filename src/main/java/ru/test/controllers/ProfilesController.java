@@ -2,9 +2,7 @@ package ru.test.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.test.entity.Profile;
 import ru.test.entity.Referrer;
@@ -46,6 +44,32 @@ public class ProfilesController {
 		modelAndView.addObject("referrer", referrer);
 		modelAndView.addObject("profile", profile);
 		modelAndView.setViewName("profile");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/delete/{profileName}", method = RequestMethod.GET)
+	public String deleteProfile(@PathVariable String profileName) {
+		profileService.deleteProfile(profileName);
+		return "redirect:/admin";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView postProfileUpdate(@ModelAttribute Profile profile, HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("index");
+		HttpSession session = request.getSession();
+		String login = (String) session.getAttribute("user");
+		profile = profileService.updateProfile(profile.getName(), profile.getSurname(), login);
+		modelAndView.addObject("profile", profile);
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public ModelAndView getUpdate(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("modif");
+		HttpSession session = request.getSession();
+		modelAndView.addObject("username", session.getAttribute("user"));
+		modelAndView.addObject("profile", new Profile());
 		return modelAndView;
 	}
 }

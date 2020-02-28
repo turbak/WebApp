@@ -17,7 +17,6 @@ public class ExitController {
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
 		session.invalidate();
-		model.addAttribute("userForm", new Profile());
 		return "redirect:login";
 	}
 }
