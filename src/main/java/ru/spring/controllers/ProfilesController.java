@@ -50,9 +50,9 @@ public class ProfilesController {
 	}
 
 	@RequestMapping(value = "/delete/{profileName}", method = RequestMethod.GET)
-	public String deleteProfile(@PathVariable String profileName) {
+	public @ResponseBody ModelAndView deleteProfile(@PathVariable String profileName) {
 		profileService.deleteProfile(profileName);
-		return "redirect:/admin";
+		return null;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
