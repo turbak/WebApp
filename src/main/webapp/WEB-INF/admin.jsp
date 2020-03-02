@@ -1,4 +1,4 @@
-<%@ page import="ru.test.entity.Profile" %>
+<%@ page import="ru.spring.entity.Profile" %>
 <%@ page import="java.util.List" %><%--
   User: administrator
   Date: 28.02.2020
@@ -14,6 +14,7 @@
         <h1>List of all registered profiles</h1>
         <table>
             <tr>
+                <th>Id</th>
                 <th>Login</th>
                 <th>Name</th>
                 <th>Surname</th>
@@ -21,12 +22,12 @@
             </tr>
     <% List<Profile> profiles = (List<Profile>) request.getAttribute("profiles");
         for (Profile profile : profiles) {
-        	out.println(String.format("<tr>" +
+        	out.println(String.format("<tr>" + "<td>%s</td>" +
                     "<td>%s</td>" +
                     "<td>%s</td>" +
                     "<td>%s</td>" +
                     "<td>%s</td>" +
-                    "</tr>", profile.getLogin(), profile.getName(), profile.getSurname(),
+                    "</tr>", profile.getId(), profile.getLogin(), profile.getName(), profile.getSurname(),
                     "<a href = \"delete/" + profile.getLogin() + "\">Delete</a>"));
         }
     %>

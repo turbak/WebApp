@@ -1,4 +1,4 @@
-<%@ page import="ru.test.entity.Profile" %>
+<%@ page import="ru.spring.entity.Profile" %>
 <%@ page import="java.util.List" %><%--
   User: administrator
   Date: 25.02.2020
