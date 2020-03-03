@@ -19,7 +19,7 @@
 <body>
     <div style="text-align: center;">
         <h1>List of all registered profiles</h1>
-        <table>
+        <table  style="border:1px solid black;margin-left:auto;margin-right:auto;">
             <tr>
                 <th>Id</th>
                 <th>Login</th>
@@ -29,7 +29,9 @@
             </tr>
     <% List<Profile> profiles = (List<Profile>) request.getAttribute("profiles");
         for (Profile profile : profiles) {
-        	out.println(String.format("<tr id=\"%s\">" + "<td>%s</td>" +
+        	out.println(String.format(
+        			"<tr id=\"%s\">" +
+                    "<td>%s</td>" +
                     "<td>%s</td>" +
                     "<td>%s</td>" +
                     "<td>%s</td>" +

@@ -42,7 +42,7 @@ public class ProfileServiceTest {
 	@Test
 	public void multiThread() throws Exception {
 		AtomicLong count1 = new AtomicLong(profileService.getAll().size());
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 300; i++) {
 			new Thread(() -> {
 				try {
 					profileService.addProfile(ProfileUtil.createRandomProfile());
@@ -53,6 +53,6 @@ public class ProfileServiceTest {
 			}).start();
 		}
 		Thread.sleep(1000);
-		Assert.assertEquals(count1.addAndGet( 50), profileService.getAll().size());
+		Assert.assertEquals(count1.addAndGet( 300), profileService.getAll().size());
 	}
 }

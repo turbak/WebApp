@@ -10,4 +10,5 @@ public interface ProfileService {
 	Profile getProfileByLoginAndPassword(String login, String password);
 	List<Profile> getAll();
 	void deleteProfile(String login);
+	Profile updateProfile(Profile profile, String login);
 }

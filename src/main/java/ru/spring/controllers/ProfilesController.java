@@ -41,8 +41,8 @@ public class ProfilesController {
 		Referrer referrer = profile.getReferrer();
 		if (referrer == null)
 			referrer = new Referrer();
-		if (referrer.getRef_name() == null)
-			referrer.setRef_name("None");
+		if (referrer.getRefName() == null)
+			referrer.setRefName("None");
 		modelAndView.addObject("referrer", referrer);
 		modelAndView.addObject("profile", profile);
 		modelAndView.setViewName("profile");
@@ -60,12 +60,8 @@ public class ProfilesController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		HttpSession session = request.getSession();
 		String login = (String) session.getAttribute("user");
-		Profile update = profileService.getProfileByLogin(login);
-		update.setName(profile.getName());
-		update.setSurname(profile.getSurname());
-		profile = profileService.addProfile(update);
+		profile = profileService.updateProfile(profile, login);
 		modelAndView.addObject("profile", profile);
-
 		return modelAndView;
 	}
 
@@ -75,6 +71,7 @@ public class ProfilesController {
 		HttpSession session = request.getSession();
 		modelAndView.addObject("username", session.getAttribute("user"));
 		modelAndView.addObject("profile", new Profile());
+		modelAndView.addObject("referrers", referrerService.getAll());
 		return modelAndView;
 	}
 }

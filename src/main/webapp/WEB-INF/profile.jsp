@@ -12,8 +12,8 @@
 <div style="text-align: center;">
     <h1>Profile of user ${profileName}</h1>
     ${profile.name} ${profile.surname}<br>
-    Referrer: ${referrer.ref_name}<br>
-    Num of followers: ${referrer.num_of_followers}
+    Referrer: ${referrer.refName}<br>
+    Num of followers: ${referrer.numOfFollowers}
 </div>
 </body>
 </html>

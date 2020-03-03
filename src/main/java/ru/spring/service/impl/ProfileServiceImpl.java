@@ -1,6 +1,7 @@
 package ru.spring.service.impl;
 
 import org.hibernate.Hibernate;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.spring.entity.Profile;
@@ -40,12 +41,21 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Profile> getAll() {
-		return profileRepository.findAll();
+		return profileRepository.findAll(Sort.by(Sort.Direction.ASC, "Id"));
 	}
 
 	@Override
 	@Transactional
 	public void deleteProfile(String login) {
 		profileRepository.deleteByLogin(login);
+	}
+
+	@Override
+	public Profile updateProfile(Profile profile, String login) {
+		Profile updated = profileRepository.getProfileByLogin(login);
+		updated.setName(profile.getName());
+		updated.setSurname(profile.getSurname());
+		updated.setReferrer(profile.getReferrer());
+		return profileRepository.save(updated);
 	}
 }

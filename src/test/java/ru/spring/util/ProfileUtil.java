@@ -23,10 +23,16 @@ public class ProfileUtil {
 		Profile profile = new Profile();
 		Random random = new Random();
 
+		StringBuilder name = new StringBuilder();
+		StringBuilder surname = new StringBuilder();
+		for (int i = 0; i < random.nextInt(20) + 5; i++) {
+			name.append((char) (random.nextInt(27) + 65));
+			surname.append((char) (random.nextInt(27) + 65));
+		}
 		profile.setLogin(String.valueOf(random.nextInt(1000000)));
 		profile.setPassword(String.valueOf(random.nextInt(1500000)));
-		profile.setName(String.valueOf(random.nextFloat()));
-		profile.setSurname(String.valueOf(random.nextFloat()));
+		profile.setName(name.toString());
+		profile.setSurname(surname.toString());
 		profile.setReferrer(null);
 		return profile;
 	}

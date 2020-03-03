@@ -20,7 +20,7 @@ ${message}
     <spring:input path="surname" placeholder="Фамилия"/><br>
     <spring:select path="referrer.id">
         <spring:option value = "0" label = "Select your referrer"/>
-        <spring:options items = "${referrers}" itemValue="Id" itemLabel="Ref_name"/>
+        <spring:options items = "${referrers}" itemValue="Id" itemLabel="RefName"/>
     </spring:select>
     <input type="submit" value="OK">
 </spring:form>

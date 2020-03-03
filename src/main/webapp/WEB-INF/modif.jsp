@@ -15,6 +15,10 @@
     <spring:form method="post" action="/update" modelAttribute="profile">
         <spring:input path="name" placeholder="Name"/>
         <spring:input path="surname" placeholder="Surname"/>
+        <spring:select path="referrer.id">
+            <spring:option value = "0" label = "Select your referrer"/>
+            <spring:options items = "${referrers}" itemValue="Id" itemLabel="RefName"/>
+        </spring:select>
         <input type="submit" value="Submit"/>
     </spring:form>
 </div>

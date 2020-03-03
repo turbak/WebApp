@@ -16,8 +16,10 @@ public class Referrer {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "referrer_seq")
 	@SequenceGenerator(sequenceName = "referrer_seq", name = "referrer_gen")
 	private Integer id;
-	private Integer num_of_followers;
-	private String ref_name;
+	@Column(name = "num_of_followers")
+	private Integer numOfFollowers;
+	@Column(name = "ref_name")
+	private String refName;
 	@OneToMany(mappedBy = "referrer", fetch = FetchType.LAZY, orphanRemoval = true, cascade = {CascadeType.MERGE})
 	private List<Profile> profiles;
 }

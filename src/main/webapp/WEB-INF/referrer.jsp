@@ -13,8 +13,8 @@
 <div style="text-align: center;">
 <h1>Registration</h1>
     <spring:form method="post" action="referrer" modelAttribute="referrer">
-        <spring:input path="ref_name" placeholder="Name"/><br>
-        <spring:input path="num_of_followers" placeholder="Number of followers"/><br>
+        <spring:input path="refName" placeholder="Name"/><br>
+        <spring:input path="numOfFollowers" placeholder="Number of followers"/><br>
         <input type="submit" value="OK">
     </spring:form>
 </div>

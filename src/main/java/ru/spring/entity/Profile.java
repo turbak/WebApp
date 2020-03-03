@@ -16,6 +16,8 @@ public class Profile {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profile_gen")
 	@SequenceGenerator(sequenceName = "profile_seq", name = "profile_gen")
 	private Integer id;
+	@Version
+	private Long version;
 	@Column(unique = true)
 	private String login;
 	private String password;
